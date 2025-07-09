@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Center Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+        }
+        .container { 
+            width: 360px; 
+            border-radius: 20px; 
+            background: white; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
+            overflow: hidden; 
+        }
+        .header { 
+            background: #007BFF; 
+            color: white; 
+            padding: 20px; 
+            text-align: center; 
+            font-size: 18px; 
+            font-weight: 600; 
+        }
+        .section { padding: 20px; }
+        .button { 
+            background: #007BFF; 
+            color: white; 
+            padding: 10px; 
+            text-align: center; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            margin: 10px 0; 
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">GuardianNet - Security Operations Center 🔴 LIVE</div>
+    <div class="section">
+        <p>Event: Tech Conference 2025 📅 Status: Active 👥 12,450 people</p>
+        <div>
+            <h4>🚨 ACTIVE ALERTS</h4>
+            <p>• Motion Alert Gate 3 - 2min</p>
+            <p>• Lost Child Hall 2 - 5min</p>
+        </div>
+        <div>
+            <h4>📊 CROWD DENSITY</h4>
+            <p>Gate A: 🔴 HIGH</p>
+            <p>Gate B: 🟡 MED</p>
+            <p>Gate C: 🟢 LOW</p>
+        </div>
+        <div>
+            <h4>🚁 DRONE STATUS</h4>
+            <p>Drone 1: ✅ Active</p>
+            <p>Drone 2: ✅ Active</p>
+            <p>Drone 3: 🔄 Transit</p>
+            <p>Drone 4: 🔋 Charging</p>
+        </div>
+        <div class="button">[MASS ALERT]</div>
+        <div class="button">[EVACUATION]</div>
+        <div class="button">[LOCKDOWN]</div>
+    </div>
+</div>
+
+</body>
+</html>

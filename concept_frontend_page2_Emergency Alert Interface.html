@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Alert Interface</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+        }
+        .container { 
+            width: 360px; 
+            border-radius: 20px; 
+            background: white; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
+            overflow: hidden; 
+        }
+        .header { 
+            background: #FF0000; 
+            color: white; 
+            padding: 20px; 
+            text-align: center; 
+            font-size: 18px; 
+            font-weight: 600; 
+        }
+        .section { padding: 20px; }
+        .button { 
+            background: #FF0000; 
+            color: white; 
+            padding: 10px; 
+            text-align: center; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            margin: 10px 0; 
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">🚨 EMERGENCY ALERT ACTIVE 🚨</div>
+    <div class="section">
+        <p>⚠️ MOTION STOPPED DETECTED</p>
+        <p>Timer: 30 seconds</p>
+        <p>████████████░░░░░░░░ 60%</p>
+        <p>📍 Location: Gate 3, Stadium</p>
+        <p>👥 3 volunteers nearby</p>
+        <p>🚁 Drone dispatched</p>
+        <div class="button">[I'M SAFE - CANCEL]</div>
+        <div class="button">[SEND EMERGENCY ALERT] 🚨 HELP</div>
+        <p>Auto-calling: Emergency Contact</p>
+        <p>Recording: Audio/Video Evidence</p>
+    </div>
+</div>
+
+</body>
+</html>

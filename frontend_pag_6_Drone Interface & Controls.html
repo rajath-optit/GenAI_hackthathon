@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drone Control Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+        }
+        .container { 
+            width: 360px; 
+            border-radius: 20px; 
+            background: white; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
+            overflow: hidden; 
+        }
+        .header { 
+            background: #007BFF; 
+            color: white; 
+            padding: 20px; 
+            text-align: center; 
+            font-size: 18px; 
+            font-weight: 600; 
+        }
+        .section { padding: 20px; }
+        .button { 
+            background: #007BFF; 
+            color: white; 
+            padding: 10px; 
+            text-align: center; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            margin: 10px 0; 
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">🚁 DRONE CONTROL CENTER - Unit Alpha-1</div>
+    <div class="section">
+        <p>Status: 🟢 ACTIVE    Battery: 78%    Altitude: 50m    Speed: 15km/h</p>
+        <div>
+            <h4>📹 LIVE FEED</h4>
+            <p>[CAMERA VIEW]</p>
+            <p>🔍 Zoom: 2x</p>
+            <p>📡 Signal: 95%</p>
+            <p>AI Detection: 👤 15 people</p>
+            <p>📦 1 suspicious object</p>
+        </div>
+        <div>
+            <h4>🎯 MISSION</h4>
+            <p>Patrol Route A</p>
+            <p>✅ Checkpoint 1</p>
+            <p>✅ Checkpoint 2</p>
+            <p>🔄 Checkpoint 3</p>
+            <p>⏸️ Checkpoint 4</p>
+        </div>
+        <div class="button">[INVESTIGATE]</div>
+        <div class="button">[RECORD VIDEO]</div>
+        <div class="button">[ANNOUNCE]</div>
+        <div class="button">[RETURN HOME]</div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Security Flowchart</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .flowchart-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .flowchart-title {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        
+        .phase {
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .phase-title {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: inline-block;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .node {
+            width: 160px;
+            height: 70px;
+            background-color: #fff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 10px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .node:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-color: #3498db;
+        }
+        
+        .node-text {
+            padding: 10px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .arrow {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 15px solid #95a5a6;
+            margin: 5px 0;
+        }
+        
+        .horizontal-line {
+            height: 2px;
+            width: 100px;
+            background-color: #95a5a6;
+            margin: 15px 0;
+        }
+        
+        .row {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .parallel-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin: 10px 0;
+            position: relative;
+        }
+        
+        .parallel-arrow {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #95a5a6;
+            transform: translateY(-50%);
+            z-index: -1;
+        }
+        
+        .engine-container {
+            position: relative;
+            margin: 20px 0;
+        }
+        
+        .engine-node {
+            width: 180px;
+            height: 80px;
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 10px auto;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .engine-diamond {
+            width: 100px;
+            height: 100px;
+            background-color: #e74c3c;
+            transform: rotate(45deg);
+            margin: 20px auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+        }
+        
+        .engine-diamond-text {
+            transform: rotate(-45deg);
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+        }
+        
+        .details-panel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 100;
+            width: 300px;
+            display: none;
+        }
+        
+        .details-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            color: #7f8c8d;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 99;
+            display: none;
+        }
+        
+        .preparation .node {
+            border-color: #3498db;
+        }
+        
+        .monitoring .node {
+            border-color: #f39c12;
+        }
+        
+        .response .node {
+            border-color: #e74c3c;
+        }
+        
+        .post-event .node {
+            border-color: #2ecc71;
+        }
+        
+        @media (max-width: 768px) {
+            .node {
+                width: 120px;
+                height: 60px;
+                font-size: 12px;
+            }
+            
+            .parallel-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .horizontal-line {
+                display: none;
+            }
+            
+            .arrow {
+                margin: 0 0 0px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flowchart-container">
+        <h1 class="flowchart-title">Event Security Management Flowchart</h1>
+        
+        <!-- Preparation Phase -->
+        <div class="phase preparation">
+            <div class="phase-title">Event Preparation Phase</div>
+            <div class="flowchart">
+                <div class="node" onclick="showDetails('Ticket Analysis', 'Evaluating ticket sales patterns, attendee demographics, and potential high-risk attendees.')">
+                    <div class="node-text">Ticket Analysis</div>
+                </div>
+                <div class="arrow"></div>
+                <div class="node" onclick="showDetails('Risk Assessment', 'Identifying potential security threats based on event type, location, and historical data.')">
+                    <div class="node-text">Risk Assessment</div>
+                </div>
+                <div class="arrow"></div>
+                <div class="node" onclick="showDetails('Security Planning', 'Deploying personnel, setting up surveillance systems, and establishing checkpoints.')">
+                    <div class="node-text">Security Planning</div>
+                </div>
+                <div class="arrow"></div>
+                <div class="node" onclick="showDetails('Volunteer Registration', 'Training and assigning roles to volunteers with proper background checks.')">
+                    <div class="node-text">Volunteer Registration</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Monitoring Phase -->
+        <div class="phase monitoring">
+            <div class="phase-title">Real-Time Monitoring Phase</div>
+            <div class="parallel-container">
+                <div class="node" onclick="showDetails('Personal Safety Mode', 'Individual emergency alerts and location-based safety recommendations.')">
+                    <div class="node-text">Personal Safety Mode</div>
+                </div>
+                <div class="node" onclick="showDetails('Crowd Density Monitoring', 'Real-time tracking of attendee distribution and flow patterns.')">
+                    <div class="node-text">Crowd Density Monitoring</div>
+                </div>
+                <div class="node" onclick="showDetails('Environmental Surveillance', 'Monitoring weather, infrastructure, and external threat factors.')">
+                    <div class="node-text">Environmental Surveillance</div>
+                </div>
+            </div>
+            <div class="parallel-arrow"></div>
+            <div class="engine-container">
+                <div class="engine-diamond" onclick="showDetails('AI Threat Detection Engine', 'Machine learning system analyzing multiple data streams for anomalies and potential threats.')">
+                    <div class="engine-diamond-text">AI Threat Detection Engine</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Response Phase -->
+        <div class="phase response">
+            <div class="phase-title">Emergency Response Phase</div>
+            <div class="flowchart">
+                <div class="node" onclick="showDetails('Alert Generation', 'Automated alerts to security personnel and attendees based on threat level.')">
+                    <div class="node-text">Alert Generation</div>
+                </div>
+                <div class="arrow"></div>
+                <div class="node" onclick="showDetails('Volunteer Activation', 'Deploying trained volunteers to assist with crowd control and first response.')">
+                    <div class="node-text">Volunteer Activation</div>
+                </div>
+                <div class="arrow"></div>
+                <div class="node" onclick="showDetails('Authority Notification', 'Direct communication with police, fire, and medical services.')">
+                    <div class="node-text">Authority Notification</div>
+                </div>
+                <div class="arrow"></div>
+                <div class="node" onclick="showDetails('Dynamic Evacuation', 'Smart routing suggestions based on real-time crowd density and threat location.')">
+                    <div class="node-text">Dynamic Evacuation</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Post-Event Phase -->
+        <div class="phase post-event">
+            <div class="phase-title">Post-Event Phase</div>
+            <div class="flowchart">
+                <div class="node" onclick="showDetails('Data Analysis', 'Comprehensive review of all security system logs and incident reports.')">
+                    <div class="node-text">Data Analysis</div>
+                </div>
+                <div class="arrow"></div>
+                <div class="node" onclick="showDetails('Feedback Collection', 'Gathering input from attendees, staff, and emergency responders.')">
+                    <div class="node-text">Feedback Collection</div>
+                </div>
+                <div class="arrow"></div>
+                <div class="node" onclick="showDetails('System Optimization', 'Updating protocols and algorithms based on lessons learned.')">
+                    <div class="node-text">System Optimization</div>
+                </div>
+                <div class="arrow"></div>
+                <div class="node" onclick="showDetails('Report Generation', 'Creating official documentation for stakeholders and regulators.')">
+                    <div class="node-text">Report Generation</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Details Panel -->
+    <div class="overlay" onclick="hideDetails()"></div>
+    <div class="details-panel">
+        <span class="close-btn" onclick="hideDetails()">&times;</span>
+        <div class="details-title" id="detail-title">Title</div>
+        <div id="detail-content">Content goes here...</div>
+    </div>
+    
+    <script>
+        function showDetails(title, content) {
+            document.getElementById('detail-title').textContent = title;
+            document.getElementById('detail-content').textContent = content;
+            document.querySelector('.details-panel').style.display = 'block';
+            document.querySelector('.overlay').style.display = 'block';
+        }
+        
+        function hideDetails() {
+            document.querySelector('.details-panel').style.display = 'none';
+            document.querySelector('.overlay').style.display = 'none';
+        }
+        
+        // Make nodes interactive
+        document.querySelectorAll('.node').forEach(node => {
+            node.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 8px 20px rgba(0,0,0,0.15)';
+                this.style.borderColor = '#3498db';
+            });
+            
+            node.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '0 3px 6px rgba(0,0,0,0.1)';
+                this.style.borderColor = '#e0e0e0';
+            });
+            
+            // Color-specific borders
+            if(this.closest('.preparation')) {
+                this.style.borderColor = '#3498db';
+            } else if(this.closest('.monitoring')) {
+                this.style.borderColor = '#f39c12';
+            } else if(this.closest('.response')) {
+                this.style.borderColor = '#e74c3c';
+            } else if(this.closest('.post-event')) {
+                this.style.borderColor = '#2ecc71';
+            }
+        });
+    </script>
+</body>
+</html>

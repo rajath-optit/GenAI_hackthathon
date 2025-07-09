@@ -1,0 +1,57 @@
+<svg width="950" height="700" viewBox="0 0 950 700">
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+        refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#95a5a6"/>
+        </marker>
+    </defs>
+    
+    <!-- Top Row Components -->
+    <ellipse cx="150" cy="100" rx="100" ry="60" class="component" fill="#e3f2fd"/>
+    <text x="150" y="95" class="component-text">Mobile Devices</text>
+    <text x="150" y="115" class="component-detail">(Safety Mode, GPS,</text>
+    <text x="150" y="135" class="component-detail">Friend Tagging)</text>
+    
+    <rect x="350" y="40" width="250" height="120" rx="15" ry="15" class="component" fill="#bbdefb"/>
+    <text x="475" y="70" class="component-text">GuardianNet Core</text>
+    <text x="475" y="90" class="component-detail">(Analytics, Alerts,</text>
+    <text x="475" y="110" class="component-detail">Volunteer Network)</text>
+    
+    <polygon points="700,40 900,40 815,160 700,160" class="component" fill="#90caf9"/>
+    <text x="800" y="70" class="component-text">Google Cloud + AI</text>
+    <text x="800" y="90" class="component-detail">(Vision, ML, Data,</text>
+    <text x="800" y="110" class="component-detail">Prediction Engine)</text>
+    
+    <path d="M250,100 Q300,70 350,100" class="two-way-arrow" fill="none"/>
+    <path d="M350,100 Q300,130 250,100" class="two-way-arrow" fill="none"/>
+    <line x1="600" y1="100" x2="700" y2="100" class="two-way-arrow"/>
+    
+    <!-- Middle Row Components -->
+    <rect x="50" y="250" width="200" height="100" class="component" fill="#c8e6c9"/>
+    <text x="150" y="280" class="component-text">Smart Poles</text>
+    <text x="150" y="300" class="component-detail">(Vision, AI,</text>
+    <text x="150" y="320" class="component-detail">Info Displays, Audio)</text>
+    
+    <path d="M350,250 L600,250 L500,370 L350,370 Z" class="component" fill="#a5d6a7"/>
+    <text x="475" y="280" class="component-text">Drone Network</text>
+    <text x="475" y="300" class="component-detail">(Camera, IR, Audio,</text>
+    <text x="475" y="320" class="component-detail">Medical Kits)</text>
+    
+    <rect x="700" y="250" width="200" height="120" class="component" fill="#81c784"/>
+    <text x="800" y="280" class="component-text">Emergency Response</text>
+    <text x="800" y="300" class="component-detail">(Law Enforcement,</text>
+    <text x="800" y="320" class="component-detail">Traffic Control)</text>
+    
+    <line x1="150" y1="160" x2="150" y2="250" class="arrow"/>
+    <line x1="475" y1="160" x2="475" y2="250" class="arrow"/>
+    <line x1="800" y1="160" x2="800" y2="250" class="arrow"/>
+    
+    <!-- Bottom Component -->
+    <rect x="350" y="450" width="250" height="120" class="component" fill="#ffe0b2"/>
+    <text x="475" y="480" class="component-text">Volunteer Network</text>
+    <text x="475" y="500" class="component-detail">(Registered Users,</text>
+    <text x="475" y="520" class="component-detail">Emergency Response)</text>
+    
+    <line x1="150" y1="370" x2="475" y2="450" class="arrow"/>
+    <line x1="800" y1="370" x2="475" y2="450" class="arrow"/>
+</svg>
